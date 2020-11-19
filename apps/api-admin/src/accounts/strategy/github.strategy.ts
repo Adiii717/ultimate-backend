@@ -14,7 +14,8 @@ import {
   LoginRequest,
   CreateRequest,
 } from '@ultimatebackend/proto-schema/account';
-
+require('dotenv').config();
+const dotenv = require('dotenv');
 @Injectable()
 export class GithubStrategy extends PassportStrategy(Strategy) {
   logger = new Logger(this.constructor.name);
@@ -24,7 +25,7 @@ export class GithubStrategy extends PassportStrategy(Strategy) {
     private readonly accountService: AccountsService,
   ) {
     super({
-      clientID: config.get<string>('app.auth.strategies.github.clientID'),
+      clientID: 'test',
       clientSecret: config.get<string>(
         'app.auth.strategies.github.clientSecret',
       ),

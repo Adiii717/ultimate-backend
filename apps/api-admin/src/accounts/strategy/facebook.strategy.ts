@@ -14,7 +14,8 @@ import {
   LoginRequest,
   CreateRequest,
 } from '@ultimatebackend/proto-schema/account';
-
+require('dotenv').config();
+const dotenv = require('dotenv');
 @Injectable()
 export class FacebookStrategy extends PassportStrategy(Strategy) {
   logger = new Logger(this.constructor.name);
@@ -24,7 +25,7 @@ export class FacebookStrategy extends PassportStrategy(Strategy) {
     private readonly accountService: AccountsService,
   ) {
     super({
-      clientID: config.get<string>('app.auth.strategies.facebook.clientID'),
+      clientID: 'test123',
       clientSecret: config.get<string>(
         'app.auth.strategies.facebook.clientSecret',
       ),

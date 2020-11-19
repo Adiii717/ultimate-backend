@@ -123,9 +123,9 @@ services:
       - consul
       - redis
     environment:
-      - CONSUL_HOST=consul
+      - CONSUL_HOST=host.docker.internal
       - NATS_HOST=nats
-      - DISCOVERY_HOST=localhost
+      - DISCOVERY_HOST=host.docker.internal
     ports:
       - 50053:50053
     labels:
@@ -162,6 +162,9 @@ services:
       args:
         NODE_ENV: development
     image: "api-admin:latest"
+    volumes:
+      - .:/nest
+    command: tail -f /dev/null
     restart: always
     depends_on:
       - consul
@@ -169,8 +172,8 @@ services:
     environment:
       - CONSUL_HOST=consul
       - NATS_HOST=nats
-      - REDIS_HOST=nats
-      - DISCOVERY_HOST=localhost
+      - REDIS_HOST=host.docker.internal
+      - DISCOVERY_HOST=host.docker.internal
     ports:
       - 50020:50020
     labels:

@@ -1,17 +1,33 @@
 consul:
-  host: localhost
+  host: host.docker.internal
   port: 8500
 config:
   key: ultimatebackend/config/${{ service.name }}
 nats:
-  url: nats://localhost:4222
+  url: nats://host.docker.internal:4222
 redis:
-  host: localhost
+  host: host.docker.internal
   port: 6379
   password: ""
 app:
   auth:
     sessionKey: "session.app"
+    strategies:
+      facebook:
+        clientID: 'gfgfggfgfgfgf'
+        clientSecret: 'fgfgfgfgf'
+        fbGraphVersion: 'v3.0'
+        callbackURL: 'https://142fa311.ngrok.io/account/facebook/callback'
+      github:
+        clientID: 'gfgfgfgfgfgf'
+        clientSecret: 'gfgfgfgfgfgfgfg'
+        fbGraphVersion: 'v3.0'
+        callbackURL: 'https://142fa311.ngrok.io/account/github/callback'
+      google:
+        clientID: 'fgffgfgfg'
+        clientSecret: 'fgfgfgfgfggf'
+        fbGraphVersion: 'v3.0'
+        callbackURL: 'https://142fa311.ngrok.io/account/google/callback'
     domain: ""
     resave: true
     rolling: true

@@ -5,17 +5,18 @@ ARG NODE_ENV=production
 ENV NODE_ENV $NODE_ENV
 
 RUN mkdir -p /nest
-ADD . /nest
+
 
 WORKDIR /nest
-
+RUN apk add --no-cache git
 RUN yarn global add @nestjs/cli
-
+ADD package.json /nest
 RUN yarn install --production=false
-
+ADD . /nest
 # Build production files
-RUN nest build proto-schema
-RUN nest build api-admin
+#RUN nest build proto-schema
+#
+#RUN nest build api-admin
 
 # Bundle app source
 COPY . .

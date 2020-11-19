@@ -2,7 +2,8 @@
 import * as Stripe from 'stripe';
 import { AggregateRoot } from '@nestjs/cqrs';
 
-export class Customer extends AggregateRoot
+export class Customer
+  extends AggregateRoot
   implements Stripe.customers.ICustomer {
   userId?: string;
   account_balance: number;

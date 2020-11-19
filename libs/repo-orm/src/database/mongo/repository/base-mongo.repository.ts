@@ -539,11 +539,9 @@ export class BaseMongoRepository<DOC, DTO = DOC> {
     req: UpdateRequest,
   ): Promise<{ ok: number; n: number; nModified: number }> {
     const collection = await this.collection;
-    const updates = await this.invokeEvents(
-      PRE_KEY,
-      ['UPDATE', 'UPDATE_ONE'],
-      { $set: { ...req.updates } },
-    );
+    const updates = await this.invokeEvents(PRE_KEY, ['UPDATE', 'UPDATE_ONE'], {
+      $set: { ...req.updates },
+    });
 
     const conditions = cleanEmptyProperties({
       tenantId: this.tenant?.tenantId,
@@ -565,11 +563,9 @@ export class BaseMongoRepository<DOC, DTO = DOC> {
    */
   async findOneAndUpdate(req: UpdateRequest): Promise<DOC> {
     const collection = await this.collection;
-    const updates = await this.invokeEvents(
-      PRE_KEY,
-      ['UPDATE', 'UPDATE_ONE'],
-      { $set: { ...req.updates } },
-    );
+    const updates = await this.invokeEvents(PRE_KEY, ['UPDATE', 'UPDATE_ONE'], {
+      $set: { ...req.updates },
+    });
 
     const conditions = cleanEmptyProperties({
       tenantId: this.tenant?.tenantId,
@@ -600,11 +596,9 @@ export class BaseMongoRepository<DOC, DTO = DOC> {
    */
   async updateOne(req: UpdateOneRequest): Promise<UpdateWriteOpResult> {
     const collection = await this.collection;
-    const updates = await this.invokeEvents(
-      PRE_KEY,
-      ['UPDATE', 'UPDATE_ONE'],
-      { $set: { ...req.updates } },
-    );
+    const updates = await this.invokeEvents(PRE_KEY, ['UPDATE', 'UPDATE_ONE'], {
+      $set: { ...req.updates },
+    });
 
     const conditions = cleanEmptyProperties({
       tenantId: this.tenant?.tenantId,

@@ -33,7 +33,7 @@ export class GqlConfigService implements GqlOptionsFactory {
     console.log(redisOptions);
 
     /* initialize cache */
-    const cache = new RedisCache(redisOptions);
+    const cache = new RedisCache({ host: 'redis' });
     return {
       autoSchemaFile: true,
       path: 'graph',
