@@ -116,7 +116,7 @@ docker ps
 docker exec -it ultimate-backend_api-admin_1 sh -c "npm install ;nest build proto-schema; npm run start:dev"
 ```
 
-> **Note:** I've seen some issues with consul docker image and so would recommend setting up consul manually before running this command
+> **Note:** I've test the above using Mac, it should work in window too, but might be an issue in Linux.
 > 
   
 ### Without Docker locally 
