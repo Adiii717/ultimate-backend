@@ -107,13 +107,14 @@ You can opt in for `etcd` or `kubernetes` as `service registry`.
 $ docker-compose --project-directory=. -f docker-compose.dev.yml up --build
 ```
 
-> **Docker compose local testing**
+### Docker compose local testing
+```
 docker-compose --project-directory=. -f docker-compose.dev.yml up api-admin
 // run the below command in separate terminal
 docker ps
 // copy the container name if not same like below one
 docker exec -it ultimate-backend_api-admin_1 sh -c "npm install ;nest build proto-schema; npm run start:dev"
-
+```
 
 > **Note:** I've seen some issues with consul docker image and so would recommend setting up consul manually before running this command
 > 
