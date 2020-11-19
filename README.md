@@ -27,12 +27,6 @@ to identify your tenants. The goal is to give your next big project that extra l
 > **Note:** Seeing alot of clone of the project which is good, but please if you can 🌟 the project as it also motivates me in improving the project. Also the docker azure CI setups is broken and will be fixed soon.
 > 
 
-> **Docker compose local testing**
-docker-compose --project-directory=. -f docker-compose.dev.yml up api-admin
-// run the below command in separate terminal
-docker ps
-// copy the container name if not same like below one
-docker exec -it ultimate-backend_api-admin_1 sh -c "npm install ;nest build proto-schema; npm run start:dev"
   
 > **Note:** Also ultimate backend is coming to `rust` as a complete microservice framework, if you want to be part of it and you program in `rust`, please write to me. Here is the repo [ultimate](https://github.com/juicycleff/ultimate)
 > 
@@ -112,6 +106,14 @@ You can opt in for `etcd` or `kubernetes` as `service registry`.
 ```bash
 $ docker-compose --project-directory=. -f docker-compose.dev.yml up --build
 ```
+
+> **Docker compose local testing**
+docker-compose --project-directory=. -f docker-compose.dev.yml up api-admin
+// run the below command in separate terminal
+docker ps
+// copy the container name if not same like below one
+docker exec -it ultimate-backend_api-admin_1 sh -c "npm install ;nest build proto-schema; npm run start:dev"
+
 
 > **Note:** I've seen some issues with consul docker image and so would recommend setting up consul manually before running this command
 > 
