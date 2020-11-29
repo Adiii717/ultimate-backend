@@ -234,8 +234,6 @@
   },
   "snyk": false,
   "husky": {
-    "hooks": {
-     
-    }
+    "hooks": {}
   }
 }

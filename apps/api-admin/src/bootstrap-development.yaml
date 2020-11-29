@@ -1,12 +1,12 @@
 consul:
-  host: host.docker.internal
+  host: consul
   port: 8500
 config:
   key: ultimatebackend/config/${{ service.name }}
 nats:
-  url: nats://host.docker.internal:4222
+  url: nats://nats:4222
 redis:
-  host: host.docker.internal
+  host: redis
   port: 6379
   password: ""
 app:
@@ -44,8 +44,8 @@ service:
   maxRetry: 5
   retryInterval: 5000
   tags: ["v1.0.0", "api"]
-  name: io.ultimatebackend.api.admin
-  port: 4000
+  name: api-admin
+  port: 50020
 loadbalance:
   ruleCls: RandomRule
 logger:

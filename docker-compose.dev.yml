@@ -15,7 +15,7 @@ services:
     environment:
       - CONSUL_HOST=consul
       - NATS_HOST=nats
-      - DISCOVERY_HOST=localhost
+      - DISCOVERY_HOST=host.docker.internal
     ports:
       - 50054:50054
     labels:
@@ -162,17 +162,24 @@ services:
       args:
         NODE_ENV: development
     image: "api-admin:latest"
+    
     volumes:
       - .:/nest
-    command: tail -f /dev/null
+    entrypoint: sh -c "apk add --no-cache curl;npm install ;nest build proto-schema; npm run start:dev"
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:50020"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     depends_on:
       - consul
       - redis
     environment:
       - CONSUL_HOST=consul
       - NATS_HOST=nats
-      - REDIS_HOST=host.docker.internal
+      - REDIS_HOST=redis
       - DISCOVERY_HOST=host.docker.internal
     ports:
       - 50020:50020
